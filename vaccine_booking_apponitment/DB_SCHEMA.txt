@@ -1,0 +1,39 @@
+Database - booking
+Table Schema:-
+
+beneficiary 
+	id   			- VarChar  -  PRIMARY KEY
+	name 			- VarChar
+	date_of_birth   - DATE
+	aadhar_no   	- VarChar  - UNIQUE CONSTRAINT
+	phone_no   		- VarChar
+
+vaccine_center
+	id					Int  		PRIMARY KEY
+	name				VarChar
+	status              ENUM 		'Active','InActive'
+
+
+vaccine_center_timeslots
+	id						int      PRIMARY KEY
+	vaccine_center_id  		Int		 FOREIGN Key
+	from_time		   		time
+	to_time			   		time
+	first_dose		   		int
+	second_dose		   		Int
+	users_count		   		Int
+	status              	ENUM 		'Active','InActive'
+	created_by				VarChar
+	created_date    		DATETIME
+	modified_by     		VarChar
+	modified_date   		DATETIME
+	
+	
+booking_details
+	id					INT			PRIMARY KEY
+	vaccine_center_id   INT			FOREIGN KEY 
+	beneficiary_id		VarChar     FOREIGN KEY
+	booked_date			Date
+	dosage_type			ENUM  		'first_dose','second_dose'
+	status              ENUM 		'Active','InActive'
+	
